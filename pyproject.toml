@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "wb-for-fun"
+version = "0.1.0"
+description = ""
+authors = ["Ruslan Bel'kov <ruslan.belckov@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10,<=3.11.99"
+ruff = "^0.4.9"
+tqdm = "^4.66.4"
+accelerate = "^0.31.0"
+bitsandbytes = "^0.43.1"
+jupyter = "^1.0.0"
+torch = { version = "^2.3.1+cu118", source = "pytorch-cu118" }
+torchvision = { version = "^0.18.1+cu118", source = "pytorch-cu118" }
+transformers = "^4.42.3"
+datasets = "^2.20.0"
+evaluate = "^0.4.2"
+scikit-learn = "^1.5.1"
+
+
+[[tool.poetry.source]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+line-length = 120
+lint.ignore = [
+    # wildcard imports are fine
+    "F403",
+    "F405",
+]
+lint.unfixable = ["F401"]
